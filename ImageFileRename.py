@@ -30,6 +30,6 @@ for d in os.listdir(SourceDir):
                 print('Deleting file: ' + fullFileToDelete)
                 # os.remove(fullFileToDelete)
                 
-                fullF = os.path.join(ImageDir, ThumbsDir, f)
-                print('Renaming file: ' + fullF + ' ::::: TO :::: ' + fullFileToDelete)
-                #os.rename(fullF, fullFileToDelete)
+                fileToRename = os.path.join(ImageDir, ThumbsDir, f)
+                print('Renaming file: ' + fileToRename + ' ::::: TO :::: ' + fullFileToDelete)
+                #os.rename(fileToRename, fullFileToDelete)
