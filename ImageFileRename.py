@@ -23,7 +23,7 @@ for d in os.listdir(SourceDir):
     ImageDir = os.path.join(SourceDir, d)
     if os.path.isdir(ImageDir) and os.path.exists(os.path.join(ImageDir, ThumbsDir)):
         for f in os.listdir(os.path.join(ImageDir, ThumbsDir)):
-            if(f.endswith('.jpg') and f.endswith('_xxx.jpg')):
+            if(f.endswith('_xxx.jpg')):
                 # im = Image.open(os.path.join(ImageDir, ThumbsDir, f))
                 fileToDelete = f.replace('_xxx.jpg', '.jpg')
                 fullFileToDelete = os.path.join(ImageDir, ThumbsDir, fileToDelete)
