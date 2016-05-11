@@ -3,38 +3,33 @@ from PIL import Image
 
 
 
-
-
-
-
-SourceDir = 'C:\\pythontest'
+SourceDir = 'C:\\Working\\SourceThumbnails\\GrantImageUpdate'
 ThumbsDir = 'Thumbs_160x120'
 
+print(SourceDir)
 
 try:
-        opts, args = getopt.getopt(sys.argv, "src")
+    opts, args = getopt.getopt(sys.argv, "src")
 except getopt.GetoptError:
-        print('beginningScript.py -src <SourceDirectory>')
-        sys.exit(2)
+    print('beginningScript.py -src <SourceDirectory>')
+    sys.exit(2)
 
-for opt, arg in opts:
-        print(opt)
-        print(arg)
+print('Options: ' + ', '.join(opts))
+print('Arguments: ' + ', '.join(args))
+
+
 
 for d in os.listdir(SourceDir):
-    if os.path.isdir(d) and os.path.exists(os.path.join(SourceDir, d, ThumbsDir)):
-        for f in os.listdir(os.path.join(SourceDir, d, ThumbsDir)):
-                        if(f.endswith('.jpg') and f.endswith('_xxx.jpg')):
-                                # im = Image.open(os.path.join(SourceDir, d, 'Thumbs_160x120', f))
-                                # print('width: ' + str(im.size[0]) + ' height: ' + str(im.size[1]))
-                                fileToDelete = f.replace('_xxx.jpg', '.jpg')
-                                fullFileToDelete = os.path.join(SourceDir, d, ThumbsDir, fileToDelete)
-                                print('Deleting file: ' + fullFileToDelete)
-                                os.remove(fullFileToDelete)
-                                
-                                fullF = os.path.join(SourceDir, d, ThumbsDir, f)
-                                print('Renaming file: ' + fullF + ' ::::: TO :::: ' + fullFileToDelete)
-                                os.rename(fullF, fullFileToDelete)
-
-					
-
+    ImageDir = os.path.join(SourceDir, d)
+    if os.path.isdir(ImageDir) and os.path.exists(os.path.join(ImageDir, ThumbsDir)):
+        for f in os.listdir(os.path.join(ImageDir, ThumbsDir)):
+            if(f.endswith('.jpg') and f.endswith('_xxx.jpg')):
+                # im = Image.open(os.path.join(ImageDir, ThumbsDir, f))
+                fileToDelete = f.replace('_xxx.jpg', '.jpg')
+                fullFileToDelete = os.path.join(ImageDir, ThumbsDir, fileToDelete)
+                print('Deleting file: ' + fullFileToDelete)
+                # os.remove(fullFileToDelete)
+                
+                fullF = os.path.join(ImageDir, ThumbsDir, f)
+                print('Renaming file: ' + fullF + ' ::::: TO :::: ' + fullFileToDelete)
+                #os.rename(fullF, fullFileToDelete)
